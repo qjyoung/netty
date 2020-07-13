@@ -149,7 +149,7 @@ final class DefaultOpenSslSession extends AbstractReferenceCounted implements Re
             if (values == null || values.isEmpty()) {
                 return EmptyArrays.EMPTY_STRINGS;
             }
-            return values.keySet().toArray(new String[0]);
+            return values.keySet().toArray(EmptyArrays.EMPTY_STRINGS);
         }
     }
 

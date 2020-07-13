@@ -30,7 +30,6 @@ final class OpenSslNullSession implements OpenSslSession {
 
     private final OpenSslSessionContext sessionContext;
     private final Certificate[] localCertificate;
-    private final OpenSslSessionId sessionId = new OpenSslSessionId(EmptyArrays.EMPTY_BYTES);
 
     // The given array will never be mutated and so its ok to not clone it.
     OpenSslNullSession(OpenSslSessionContext sessionContext, Certificate[] localCertificate) {
@@ -40,7 +39,7 @@ final class OpenSslNullSession implements OpenSslSession {
 
     @Override
     public OpenSslSessionId sessionId() {
-        return sessionId;
+        return OpenSslSessionId.NULL_ID;
     }
 
     @Override
@@ -50,7 +49,7 @@ final class OpenSslNullSession implements OpenSslSession {
 
     @Override
     public byte[] getId() {
-        return sessionId.cloneBytes();
+        return sessionId().cloneBytes();
     }
 
     @Override

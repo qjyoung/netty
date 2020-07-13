@@ -115,8 +115,8 @@ class OpenSslSessionCache implements SSLSessionCache {
                                             int peerPort, String protocol, String cipher,
                                             OpenSslJavaxX509Certificate[] peerCertificateChain,
                                             long creationTime) {
-        synchronized (this) {
-            if (sslSession != -1) {
+        if (sslSession != -1) {
+            synchronized (this) {
                 if (!io.netty.internal.tcnative.SSLSession.upRef(sslSession)) {
                     throw new IllegalStateException("Unable to update reference count of SSL_SESSION*");
                 }
